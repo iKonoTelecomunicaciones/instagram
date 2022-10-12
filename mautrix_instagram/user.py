@@ -65,14 +65,6 @@ from .db import Portal as DBPortal, User as DBUser
 if TYPE_CHECKING:
     from .__main__ import InstagramBridge
 
-try:
-    from aiohttp_socks import ProxyConnectionError, ProxyError, ProxyTimeoutError
-except ImportError:
-
-    class ProxyError(Exception):
-        pass
-
-    ProxyConnectionError = ProxyTimeoutError = ProxyError
 
 
 METRIC_MESSAGE = Summary("bridge_on_message", "calls to handle_message")
@@ -276,7 +268,7 @@ class User(DBUser, BaseUser):
 
     async def on_proxy_update(self, evt: ProxyUpdate | None = None) -> None:
         if self.client:
-            self.client.setup_http()
+            self.client.setup_http(self.state.cookies.jar)
 
     # TODO this stuff could probably be moved to mautrix-python
     async def get_notice_room(self) -> RoomID:

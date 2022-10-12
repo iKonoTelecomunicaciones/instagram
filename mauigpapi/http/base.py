@@ -77,7 +77,6 @@ class BaseAndroidAPI:
         log: TraceLogger | None = None,
         proxy_handler: ProxyHandler | None = None,
     ) -> None:
-        # self.http = ClientSession(cookie_jar=state.cookies.jar)
         self.log = log or logging.getLogger("mauigpapi.http")
 
         self.proxy_handler = proxy_handler
