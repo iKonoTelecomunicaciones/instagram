@@ -65,8 +65,6 @@ from .db import Portal as DBPortal, User as DBUser
 if TYPE_CHECKING:
     from .__main__ import InstagramBridge
 
-
-
 METRIC_MESSAGE = Summary("bridge_on_message", "calls to handle_message")
 METRIC_THREAD_SYNC = Summary("bridge_on_thread_sync", "calls to handle_thread_sync")
 METRIC_RTD = Summary("bridge_on_rtd", "calls to handle_rtd")
@@ -245,6 +243,7 @@ class User(DBUser, BaseUser):
         self.mqtt.add_event_handler(ThreadSyncEvent, self.handle_thread_sync)
         self.mqtt.add_event_handler(RealtimeDirectEvent, self.handle_rtd)
         self.mqtt.add_event_handler(ProxyUpdate, self.on_proxy_update)
+
         await self.update()
 
         self.loop.create_task(self._try_sync_puppet(user))
