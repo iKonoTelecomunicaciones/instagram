@@ -41,15 +41,19 @@ setuptools.setup(
     project_urls={
         "Changelog": "https://github.com/mautrix/instagram/blob/master/CHANGELOG.md",
     },
+
     author="Tulir Asokan",
     author_email="tulir@maunium.net",
+
     description="A Matrix-Instagram puppeting bridge.",
     long_description=long_desc,
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
+
     install_requires=install_requires,
     extras_require=extras_require,
     python_requires="~=3.8",
+
     classifiers=[
         "Development Status :: 4 - Beta",
         "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
