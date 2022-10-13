@@ -24,15 +24,13 @@ except IOError:
     long_desc = "Failed to read README.md"
 
 with open("mautrix_instagram/version.py", "w") as version_file:
-    version_file.write(
-        f"""# Generated in setup.py
+    version_file.write(f"""# Generated in setup.py
 
 git_tag = {git_tag!r}
 git_revision = {git_revision!r}
 version = {version!r}
 linkified_version = {linkified_version!r}
-"""
-    )
+""")
 
 setuptools.setup(
     name="mautrix-instagram",
@@ -48,6 +46,7 @@ setuptools.setup(
     description="A Matrix-Instagram puppeting bridge.",
     long_description=long_desc,
     long_description_content_type="text/markdown",
+
     packages=setuptools.find_packages(),
 
     install_requires=install_requires,
