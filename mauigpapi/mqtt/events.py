@@ -31,7 +31,7 @@ class NewSequenceID:
     seq_id: int
     snapshot_at_ms: int
 
+
 @dataclass
 class ProxyUpdate:
     pass
-
